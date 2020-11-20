@@ -3,14 +3,14 @@ import random
 import constants
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 def main():
     browser = get_headless_browser()
     log_into_account(browser)
-    edit_apartment_ad(browser)
+    #edit_apartment_ad(browser)
     logout_account(browser)
-    browser.quit()
 
 
 def get_headless_browser():
@@ -29,7 +29,7 @@ def log_into_account(browser):
     browser.find_element_by_xpath(constants.LOGIN_NAME_PATH).send_keys(constants.LOGIN_NAME)
     browser.find_element_by_xpath(constants.LOGIN_PW_PATH).send_keys(constants.LOGIN_PW)
     browser.find_element_by_xpath(constants.LOGIN_FORM_BUTTON).click()
-    time.sleep(2)
+    browser.save_screenshot('test2.png')
     return True
 
 
@@ -45,7 +45,7 @@ def edit_apartment_ad(browser):
 
 
 def logout_account(browser):
-    browser.find_element_by_xpath(constants.LOGOUT_BUTTON).click()
+    browser.quit()
     return True
 
 
