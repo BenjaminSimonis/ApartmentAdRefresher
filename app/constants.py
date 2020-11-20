@@ -1,5 +1,15 @@
-# Login
-user = ""
-passw = ""
+# Login XPaths
+LOGIN_BUTTON = ""
+LOGIN_NAME = ""
+LOGIN_PW = ""
+LOGIN_NAME_PATH = ""
+LOGIN_PW_PATH = ""
+LOGIN_FORM_BUTTON = ""
+LOGOUT_BUTTON = ""
 
-url = "https://www.duckduckgo.com"
+# Apartment Ad Edit XPaths
+EDIT_AD_BUTTON = ""
+SAVE_EDITED_AD_BUTTON = ""
+AD_DESCRIPTION_FIELD = ""
+
+URL = ""
