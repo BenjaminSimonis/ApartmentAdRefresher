@@ -9,7 +9,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 def main():
     browser = get_headless_browser()
     log_into_account(browser)
-    #edit_apartment_ad(browser)
+    edit_apartment_ad(browser)
     logout_account(browser)
 
 
@@ -29,18 +29,23 @@ def log_into_account(browser):
     browser.find_element_by_xpath(constants.LOGIN_NAME_PATH).send_keys(constants.LOGIN_NAME)
     browser.find_element_by_xpath(constants.LOGIN_PW_PATH).send_keys(constants.LOGIN_PW)
     browser.find_element_by_xpath(constants.LOGIN_FORM_BUTTON).click()
-    browser.save_screenshot('test2.png')
+    time.sleep(10)
     return True
 
 
 def edit_apartment_ad(browser):
+    browser.find_element_by_xpath(constants.OPEN_PROFILE).click()
+    time.sleep(10)
+    browser.find_element_by_xpath(constants.OPEN_MY_ADVERTISEMENT).click()
+    time.sleep(10)
     browser.find_element_by_xpath(constants.EDIT_AD_BUTTON).click()
     # Edit ad description with one letter and delete it to make it look updated
+    time.sleep(10)
     browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
     browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
     # Save ad
     browser.find_element_by_xpath(constants.SAVE_EDITED_AD_BUTTON).click()
-    time.sleep(2)
+    time.sleep(5)
     return True
 
 
