@@ -34,18 +34,17 @@ def log_into_account(browser):
 
 
 def edit_apartment_ad(browser):
-    browser.find_element_by_xpath(constants.OPEN_PROFILE).click()
-    time.sleep(10)
-    browser.find_element_by_xpath(constants.OPEN_MY_ADVERTISEMENT).click()
-    time.sleep(10)
-    browser.find_element_by_xpath(constants.EDIT_AD_BUTTON).click()
-    # Edit ad description with one letter and delete it to make it look updated
-    time.sleep(10)
-    browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
-    browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
-    # Save ad
-    browser.find_element_by_xpath(constants.SAVE_EDITED_AD_BUTTON).click()
-    time.sleep(5)
+    for ad in constants.EDIT_AD_BUTTON:
+        browser.get(constants.URL_ADS)
+        time.sleep(10)
+        browser.find_element_by_xpath(ad).click()
+        # Edit ad description with one letter and delete it to make it look updated
+        time.sleep(10)
+        browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
+        browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
+        # Save ad
+        browser.find_element_by_xpath(constants.SAVE_EDITED_AD_BUTTON).click()
+        time.sleep(5)
     return True
 
 
