@@ -10,8 +10,4 @@
 
 4. Edit credentials in constants.py
 
-5. Edit XPath of your Apartmant Ad in constants.py
-
-6. Edit URL in constants.py
-
-7. Run main.py
+5. Run main.py
