@@ -32,12 +32,17 @@ def log_into_account(browser):
     time.sleep(10)
     return True
 
+def get_apartment_counter(browser):
+    browser.get(constants.URL_ADS)
+    time.sleep(8)
+    return int(browser.find_element_by_xpath(constants.AD_COUNTER_FIELD).text)
 
 def edit_apartment_ad(browser):
-    for ad in constants.EDIT_AD_BUTTON:
+    apartment_count = get_apartment_counter()
+    for runner in range(apartment_count):
         browser.get(constants.URL_ADS)
         time.sleep(10)
-        browser.find_element_by_xpath(ad).click()
+        browser.find_element_by_xpath(constants.EDIT_AD_BUTTON1 + (runner + 1) + constants.EDIT_AD_BUTTON2).click()
         # Edit ad description with one letter and delete it to make it look updated
         time.sleep(10)
         browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
@@ -55,6 +60,7 @@ def logout_account(browser):
 
 if __name__ == '__main__':
     while True:
-        #Repeat every 22 to 36 hours
-        time.sleep(random.randint(79200, 129600))
+        #Repeat every 2 to 3.5 hours
+        time.sleep(random.randint(7200, 12800))
         main()
+22

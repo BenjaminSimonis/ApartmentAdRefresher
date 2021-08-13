@@ -11,10 +11,13 @@ OPEN_PROFILE = '/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/a'
 OPEN_MY_ADVERTISEMENT = '/html/body/div[1]/div[1]/div[4]/div/div/div[1]/nav/ul/li[2]/a'
 
 # Edit here the XPath of your Apartmant Ads
-EDIT_AD_BUTTON = ['/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div/div[2]/div/ul/li[1]/div[4]/div/div/div[3]/div[2]/div/a[1]', '/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div/div[2]/div/ul/li[2]/div[4]/div/div/div[3]/div[2]/div/a[1]', '/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div/div[2]/div/ul/li[3]/div[4]/div/div/div[3]/div[2]/div/a[1]', '/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div/div[2]/div/ul/li[4]/div[4]/div/div/div[3]/div[2]/div/a[1]', '/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div/div[2]/div/ul/li[5]/div[4]/div/div/div[3]/div[2]/div/a[1]']
+EDIT_AD_BUTTON1 = '/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div/div[2]/div/ul/li['
+EDIT_AD_BUTTON2 = ']/div[4]/div/div/div[3]/div[2]/div/a[1]'
 
 AD_DESCRIPTION_FIELD = '//*[@id="freetext_property_description"]'
 SAVE_EDITED_AD_BUTTON = '//*[@id="update_offer"]'
+
+AD_COUNTER_FIELD = '//*[@id="offers_active_ads_count"]'
 
 URL = "https://wg-gesucht.de"
 URL_ADS = "https://www.wg-gesucht.de/meine-anzeigen.html"
