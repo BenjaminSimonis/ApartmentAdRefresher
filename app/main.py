@@ -25,16 +25,16 @@ def get_headless_browser():
 def log_into_account(browser):
     browser.get(constants.URL)
     browser.find_element_by_xpath(constants.LOGIN_BUTTON).click()
-    time.sleep(2)
+    time.sleep(15)
     browser.find_element_by_xpath(constants.LOGIN_NAME_PATH).send_keys(constants.LOGIN_NAME)
     browser.find_element_by_xpath(constants.LOGIN_PW_PATH).send_keys(constants.LOGIN_PW)
     browser.find_element_by_xpath(constants.LOGIN_FORM_BUTTON).click()
-    time.sleep(10)
+    time.sleep(15)
     return True
 
 def get_apartment_counter(browser):
     browser.get(constants.URL_ADS)
-    time.sleep(8)
+    time.sleep(15)
     return int(browser.find_element_by_xpath(constants.AD_COUNTER_FIELD).text)
 
 def edit_apartment_ad(browser):
@@ -42,15 +42,16 @@ def edit_apartment_ad(browser):
     for runner in range(apartment_count):
         adlist_number = runner + 1
         browser.get(constants.URL_ADS)
-        time.sleep(10)
+        time.sleep(15)
         browser.find_element_by_xpath(constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
         # Edit ad description with one letter and delete it to make it look updated
-        time.sleep(10)
+        time.sleep(15)
         browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
         browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
+        time.sleep(5)
         # Save ad
         browser.find_element_by_xpath(constants.SAVE_EDITED_AD_BUTTON).click()
-        time.sleep(5)
+        time.sleep(15)
     return True
 
 
@@ -64,4 +65,3 @@ if __name__ == '__main__':
         #Repeat every 2 to 3.5 hours
         time.sleep(random.randint(7200, 12800))
         main()
-22
