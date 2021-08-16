@@ -40,9 +40,10 @@ def get_apartment_counter(browser):
 def edit_apartment_ad(browser):
     apartment_count = get_apartment_counter(browser)
     for runner in range(apartment_count):
+        adlist_number = runner + 1
         browser.get(constants.URL_ADS)
         time.sleep(10)
-        browser.find_element_by_xpath(constants.EDIT_AD_BUTTON1 + (runner + 1) + constants.EDIT_AD_BUTTON2).click()
+        browser.find_element_by_xpath(constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
         # Edit ad description with one letter and delete it to make it look updated
         time.sleep(10)
         browser.find_element_by_xpath(constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
