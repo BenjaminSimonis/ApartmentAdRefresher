@@ -38,7 +38,7 @@ def get_apartment_counter(browser):
     return int(browser.find_element_by_xpath(constants.AD_COUNTER_FIELD).text)
 
 def edit_apartment_ad(browser):
-    apartment_count = get_apartment_counter()
+    apartment_count = get_apartment_counter(browser)
     for runner in range(apartment_count):
         browser.get(constants.URL_ADS)
         time.sleep(10)
