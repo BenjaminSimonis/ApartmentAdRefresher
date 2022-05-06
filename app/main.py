@@ -1,5 +1,4 @@
 import time
-import random
 import constants
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -16,6 +15,8 @@ def main():
         browser.close
         browser.quit
         print("browser closed")
+
+        # Kill all remaining firefox processes
         pids = str(subprocess.check_output(
             ['pidof', 'firefox-esr'])).split(' ')
         for ids in pids:
@@ -62,26 +63,31 @@ def get_apartment_counter(browser):
 def edit_apartment_ad(browser):
     apartment_count = get_apartment_counter(browser)
     print(apartment_count)
+
     for runner in range(apartment_count):
         adlist_number = runner + 1
         browser.get(constants.URL_ADS)
         time.sleep(constants.SLEEP_COUNTER)
         print("Ad Number: " + str(adlist_number))
+
         # Open Apartmant Ad from your list
         browser.find_element_by_xpath(
             constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
         time.sleep(constants.SLEEP_COUNTER)
         browser.find_element_by_xpath(
             constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON3).click()
+
         # Edit ad description with one letter and delete it to make it look updated
         time.sleep(constants.SLEEP_COUNTER)
         browser.find_element_by_xpath(
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
         browser.find_element_by_xpath(
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
+
         # Save ad
         browser.find_element_by_xpath(constants.SAVE_EDITED_AD_BUTTON).click()
         time.sleep(constants.SLEEP_COUNTER)
+
     return True
 
 

@@ -1,6 +1,7 @@
 # Login Credentials
 LOGIN_NAME = ""
 LOGIN_PW = ""
+
 # Login XPath
 COOKIE_ACCEPT = '/html/body/div[2]/div[1]/div[2]/span[2]/a'
 LOGIN_BUTTON = '/html/body/div[1]/div[2]/div[1]/div[2]/a[3]'
