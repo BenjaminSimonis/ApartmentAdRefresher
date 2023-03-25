@@ -16,15 +16,15 @@ OPEN_PROFILE = '/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/a'
 OPEN_MY_ADVERTISEMENT = '/html/body/div[1]/div[1]/div[4]/div/div/div[1]/nav/ul/li[2]/a'
 
 # Edit here the XPath of your Apartmant Ads
-EDIT_AD_BUTTON1 = '/html/body/div[3]/div[1]/div[3]/div/div/div[2]/div[1]/div/div[3]/div/div['
+EDIT_AD_BUTTON1 = '/html/body/div[3]/div[1]/div[3]/div/div/div[2]/div[1]/div[2]/div[2]/div/div['
 EDIT_AD_BUTTON2 = ']/div[1]/div[2]/div[1]/div[2]/span'
 EDIT_AD_BUTTON3 = ']/div[1]/div[2]/div[1]/div[2]/ul/li[1]/a'
 
 AD_DESCRIPTION_FIELD = '//*[@id="freetext_property_description"]'
 SAVE_EDITED_AD_BUTTON = '//*[@id="update_offer"]'
 
-AD_COUNTER_FIELD = '/html/body/div[1]/div[1]/div[4]/div/div/div[2]/div[1]/div/div[1]/div[2]'
-AD_COUNTER_FIELD_CSS = 'div.px20 > b:nth-child(1)'
+AD_COUNTER_FIELD = '/html/body/div[3]/div[1]/div[3]/div/div/div[2]/div[1]/ul/li[1]/div'
+AD_COUNTER_FIELD_CSS = 'div.active'
 
 URL = "https://wg-gesucht.de"
 URL_ADS = "https://www.wg-gesucht.de/meine-anzeigen.html"

@@ -1,6 +1,7 @@
 import time
 import constants
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import subprocess
@@ -9,7 +10,9 @@ import subprocess
 def main():
     browser = get_headless_browser()
     try:
+        time.sleep(constants.SLEEP_COUNTER)
         log_into_account(browser)
+        time.sleep(constants.SLEEP_COUNTER)
         edit_apartment_ad(browser)
     finally:
         browser.close
@@ -30,8 +33,7 @@ def get_headless_browser():
     options.add_argument('--incognito')
     options.add_argument('--headless')
     executable_path = constants.GECKODRIVER_PATH
-    browser = webdriver.Firefox(
-        executable_path=executable_path, options=options)
+    browser = webdriver.Firefox()
     return browser
 
 
@@ -39,17 +41,17 @@ def log_into_account(browser):
     browser.get(constants.URL)
     time.sleep(constants.SLEEP_COUNTER)
     try:
-        browser.find_element_by_xpath(constants.COOKIE_ACCEPT).click()
+        browser.find_element(By.XPATH, constants.COOKIE_ACCEPT).click()
         time.sleep(constants.SLEEP_COUNTER)
     except:
         print("Cookies already accepted")
-    browser.find_element_by_css_selector(constants.LOGIN_BUTTON_CSS).click()
+    browser.find_element(By.CSS_SELECTOR, constants.LOGIN_BUTTON_CSS).click()
     time.sleep(constants.SLEEP_COUNTER)
-    browser.find_element_by_xpath(
+    browser.find_element(By.XPATH,
         constants.LOGIN_NAME_PATH).send_keys(constants.LOGIN_NAME)
-    browser.find_element_by_xpath(
+    browser.find_element(By.XPATH,
         constants.LOGIN_PW_PATH).send_keys(constants.LOGIN_PW)
-    browser.find_element_by_xpath(constants.LOGIN_FORM_BUTTON).click()
+    browser.find_element(By.XPATH,constants.LOGIN_FORM_BUTTON).click()
     time.sleep(constants.SLEEP_COUNTER)
     return True
 
@@ -57,7 +59,10 @@ def log_into_account(browser):
 def get_apartment_counter(browser):
     browser.get(constants.URL_ADS)
     time.sleep(constants.SLEEP_COUNTER)
-    return int(browser.find_element_by_css_selector(constants.AD_COUNTER_FIELD_CSS).text)
+    ad_text = browser.find_element(By.CSS_SELECTOR,
+                constants.AD_COUNTER_FIELD_CSS).text
+    ad_count = ad_text.split()
+    return int(ad_count[0])
 
 
 def edit_apartment_ad(browser):
@@ -71,21 +76,21 @@ def edit_apartment_ad(browser):
         print("Ad Number: " + str(adlist_number))
 
         # Open Apartmant Ad from your list
-        browser.find_element_by_xpath(
+        browser.find_element(By.XPATH,
             constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
         time.sleep(constants.SLEEP_COUNTER)
-        browser.find_element_by_xpath(
+        browser.find_element(By.XPATH,
             constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON3).click()
 
         # Edit ad description with one letter and delete it to make it look updated
         time.sleep(constants.SLEEP_COUNTER)
-        browser.find_element_by_xpath(
+        browser.find_element(By.XPATH,
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
-        browser.find_element_by_xpath(
+        browser.find_element(By.XPATH,
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
 
         # Save ad
-        browser.find_element_by_xpath(constants.SAVE_EDITED_AD_BUTTON).click()
+        browser.find_element(By.XPATH,constants.SAVE_EDITED_AD_BUTTON).click()
         time.sleep(constants.SLEEP_COUNTER)
 
     return True
