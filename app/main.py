@@ -91,7 +91,7 @@ def edit_apartment_ad(browser):
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
         browser.find_element(By.XPATH,  
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
-
+        webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         # Save ad
         browser.find_element(By.XPATH,constants.SAVE_EDITED_AD_BUTTON).click()
         time.sleep(constants.SLEEP_COUNTER)
