@@ -85,7 +85,7 @@ def edit_apartment_ad(browser):
         # Edit ad description with one letter and delete it to make it look updated
         time.sleep(constants.SLEEP_COUNTER)
         if browser.find_element(By.XPATH, constants.HARD_AD_LIMIT_XPATH):
-            webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
+            ActionChains(browser).move_to_element(browser.find_element(By.XPATH,constants.HARD_AD_LIMIT_XPATH)).click().perform()
         time.sleep(constants.SLEEP_COUNTER)
         browser.find_element(By.XPATH,
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
@@ -93,7 +93,10 @@ def edit_apartment_ad(browser):
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.BACKSPACE)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         # Save ad
-        browser.find_element(By.XPATH,constants.SAVE_EDITED_AD_BUTTON).click()
+        time.sleep(constants.SLEEP_COUNTER)
+        webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
+        time.sleep(constants.SLEEP_COUNTER)
+        ActionChains(browser).move_to_element_with_offset(browser.find_element(By.XPATH,constants.SAVE_EDITED_AD_BUTTON),0,-1900 ).click().perform() 
         time.sleep(constants.SLEEP_COUNTER)
 
     return True
