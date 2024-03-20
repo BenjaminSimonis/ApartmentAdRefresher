@@ -138,3 +138,6 @@ credentials.json
 
 # Cython debug symbols
 cython_debug/
+
+# Credentials 
+app/credentials.py
