@@ -33,8 +33,7 @@ def get_headless_browser():
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--incognito')
     options.add_argument('--headless')
-    executable_path = constants.GECKODRIVER_PATH
-    browser = webdriver.Firefox()
+    browser = webdriver.Firefox(executable_path=constants.GECKODRIVER_PATH, options=options)
     return browser
 
 
