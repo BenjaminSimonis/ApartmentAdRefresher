@@ -18,6 +18,7 @@ EDIT_AD_BUTTON2 = ']/div[1]/div[2]/div[1]/div[2]/span'
 EDIT_AD_BUTTON3 = ']/div[1]/div[2]/div[1]/div[2]/ul/li[1]/a'
 
 HARD_AD_LIMIT_XPATH = '//*[@id="hard_ad_limit_modal"]'
+PRIVATE_AD_MODAL_XPATH = '//*[@id="private_users_ad_modal"]'
 AD_DESCRIPTION_FIELD = '//*[@id="freetext_property_description"]'
 SAVE_EDITED_AD_BUTTON = '//*[@id="update_offer"]'
 
