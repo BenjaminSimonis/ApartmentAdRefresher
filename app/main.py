@@ -34,6 +34,7 @@ def get_headless_browser():
     options.add_argument('--incognito')
     options.add_argument('--headless')
     browser = webdriver.Firefox(executable_path=constants.GECKODRIVER_PATH, options=options)
+    browser.maximize_window()
     return browser
 
 
@@ -85,7 +86,7 @@ def edit_apartment_ad(browser):
         # Edit ad description with one letter and delete it to make it look updated
         time.sleep(constants.SLEEP_COUNTER)
         if browser.find_element(By.XPATH, constants.HARD_AD_LIMIT_XPATH):
-            ActionChains(browser).move_to_element(browser.find_element(By.XPATH,constants.HARD_AD_LIMIT_XPATH)).click().perform()
+            browser.execute_script("document.getElementById('hard_ad_limit_modal').style.display = 'none';")
         time.sleep(constants.SLEEP_COUNTER)
         browser.find_element(By.XPATH,
             constants.AD_DESCRIPTION_FIELD).send_keys(Keys.SPACE)
@@ -94,9 +95,17 @@ def edit_apartment_ad(browser):
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         # Save ad
         time.sleep(constants.SLEEP_COUNTER)
-        webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
+        if browser.find_element(By.XPATH, constants.PRIVATE_AD_MODAL_XPATH):
+            browser.execute_script("document.getElementById('private_users_ad_modal').style.display = 'none';")
         time.sleep(constants.SLEEP_COUNTER)
-        ActionChains(browser).move_to_element_with_offset(browser.find_element(By.XPATH,constants.SAVE_EDITED_AD_BUTTON),0,-1900 ).click().perform() 
+        try:
+            browser.execute_script("document.getElementsByClassName('modal-backdrop fade in').style.display = 'none';")
+        except:
+            pass
+        time.sleep(constants.SLEEP_COUNTER)
+        button = browser.find_element(By.XPATH,constants.SAVE_EDITED_AD_BUTTON)
+        browser.execute_script("arguments[0].click();", button)
+        print('saved')
         time.sleep(constants.SLEEP_COUNTER)
 
     return True
