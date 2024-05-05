@@ -5,6 +5,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 import subprocess
 
 
@@ -29,11 +33,14 @@ def main():
 
 
 def get_headless_browser():
-    options = webdriver.FirefoxOptions()
+    options = Options()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--incognito')
     options.add_argument('--headless')
-    browser = webdriver.Firefox(executable_path=constants.GECKODRIVER_PATH, options=options)
+    firefox_profile = FirefoxProfile()
+    firefox_profile.set_preference("javascript.enabled", True)
+    options.profile = firefox_profile
+    browser = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=options)
     browser.maximize_window()
     return browser
 
@@ -69,13 +76,13 @@ def get_apartment_counter(browser):
 def edit_apartment_ad(browser):
     apartment_count = get_apartment_counter(browser)
     print(apartment_count)
+    EDIT_AD_BUTTON_PATH = None
     EDIT_AD_BUTTON_PATH = constants.EDIT_AD_BUTTON0 if apartment_count == 1 else constants.EDIT_AD_BUTTON1
     for runner in range(apartment_count):
         adlist_number = runner + 1
         browser.get(constants.URL_ADS)
         time.sleep(constants.SLEEP_COUNTER)
         print("Ad Number: " + str(adlist_number))
-
         # Open Apartmant Ad from your list
         browser.find_element(By.XPATH,
             EDIT_AD_BUTTON_PATH + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
