@@ -16,10 +16,14 @@
 
 7. `pip install selenium`
 
-8. `pip install webdriver-manager --break-system-packages`
+8. As admin: `pip install webdriver-manager --break-system-packages`
 
 9. Edit credentials and geckodriver path in constants.py
 
 10. Run main.py
 
-11. (OPT.) Create crontab entry for refreshing on regular basis
+11. (OPT.) Create crontab entry for refreshing on regular basis: 
+
+	`sudo crontab -e`
+
+	`24 * * * * nohup python /Path/To/Repo/app/main.py > /var/log/aar.log 2>&1`
