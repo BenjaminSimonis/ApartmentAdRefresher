@@ -13,7 +13,7 @@ OPEN_MY_ADVERTISEMENT = '/html/body/div[1]/div[1]/div[4]/div/div/div[1]/nav/ul/l
 
 # Edit here the XPath of your Apartmant Ads
 # EDIT_AD_BUTTON0 = '/html/body/div[3]/div[1]/div[4]/div/div/div[3]/div[1]/div[2]/div[2]/div/div['
-EDIT_AD_BUTTON1 = '/html/body/div[3]/div[1]/div[3]/div/div/div[3]/div[1]/div[2]/div[2]/div/div['
+EDIT_AD_BUTTON1 = '/html/body/div[1]/div[1]/div[3]/div/div/div[2]/div[1]/div[2]/div[2]/div/div['
 EDIT_AD_BUTTON11 = '/html/body/div[1]/div[1]/div[3]/div/div/div[2]/div[1]/div[2]/div[2]/div/div['
 EDIT_AD_BUTTON2 = ']/div[1]/div[2]/div[1]/div[2]/div/span'
 EDIT_AD_BUTTON3 = ']/div[1]/div[2]/div[1]/div[2]/div/ul/li[1]/a'
