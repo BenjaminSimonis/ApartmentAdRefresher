@@ -54,13 +54,14 @@ def get_apartment_counter(browser):
     browser.get(constants.URL_ADS)
     time.sleep(constants.SLEEP_COUNTER)
     ad_text = browser.find_element(By.CSS_SELECTOR, constants.AD_COUNTER_FIELD_CSS).text
+    print(ad_text)
     ad_count = ad_text.split()
     return int(ad_count[0])
 
 def edit_apartment_ad(browser):
     apartment_count = get_apartment_counter(browser)
     print(apartment_count)
-    #EDIT_AD_BUTTON_PATH = constants.EDIT_AD_BUTTON0 if apartment_count == 1 else constants.EDIT_AD_BUTTON1
+    EDIT_AD_BUTTON = constants.EDIT_AD_BUTTON0 if is_element_present(browser, By.XPATH, constants.INACTIVE_TAB) else constants.EDIT_AD_BUTTON1
 
     for runner in range(apartment_count):
         adlist_number = runner + 1
@@ -68,9 +69,9 @@ def edit_apartment_ad(browser):
         time.sleep(constants.SLEEP_COUNTER)
         print("Ad Number: " + str(adlist_number))
 
-        browser.find_element(By.XPATH, constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
+        browser.find_element(By.XPATH, EDIT_AD_BUTTON + str(adlist_number) + constants.EDIT_AD_BUTTON2).click()
         time.sleep(constants.SLEEP_COUNTER)
-        browser.find_element(By.XPATH, constants.EDIT_AD_BUTTON1 + str(adlist_number) + constants.EDIT_AD_BUTTON3).click()
+        browser.find_element(By.XPATH, EDIT_AD_BUTTON + str(adlist_number) + constants.EDIT_AD_BUTTON3).click()
 
         time.sleep(constants.SLEEP_COUNTER)
         if is_element_present(browser, By.XPATH, constants.HARD_AD_LIMIT_XPATH):
