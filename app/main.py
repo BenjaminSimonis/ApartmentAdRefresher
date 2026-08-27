@@ -45,8 +45,9 @@ def log_into_account(browser):
     browser.find_element(By.CSS_SELECTOR, constants.LOGIN_BUTTON_CSS).click()
     time.sleep(constants.SLEEP_COUNTER)
     browser.find_element(By.XPATH, constants.LOGIN_NAME_PATH).send_keys(credentials.LOGIN_NAME)
+    browser.find_element(By.CSS_SELECTOR, constants.LOGIN_NEXT_CSS_SELECTOR).click()
     browser.find_element(By.XPATH, constants.LOGIN_PW_PATH).send_keys(credentials.LOGIN_PW)
-    browser.find_element(By.XPATH, constants.LOGIN_FORM_BUTTON).click()
+    browser.find_element(By.CSS_SELECTOR, constants.LOGIN_FORM_BUTTON_CSS_SELECTOR).click()
     time.sleep(constants.SLEEP_COUNTER)
     return True
 
