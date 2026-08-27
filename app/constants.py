@@ -3,17 +3,18 @@ COOKIE_ACCEPT = '/html/body/div[2]/div[1]/div[2]/span[2]/a'
 LOGIN_BUTTON = '/html/body/div[1]/div[2]/div[1]/div[2]/a[3]'
 LOGIN_BUTTON_CSS = '.dropdown-mini > a:nth-child(1)'
 LOGIN_BUTTON_CLASS_NAME = 'btn btn-md wgg_tertiary'
-LOGIN_NAME_PATH = '//*[@id="login_email_username"]'
+LOGIN_NAME_PATH = '//*[@id="pre_session_email"]'
+LOGIN_NEXT_CSS_SELECTOR = '#pre_session_form > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)'
 LOGIN_PW_PATH = '//*[@id="login_password"]'
-LOGIN_FORM_BUTTON = '//*[@id="login_submit"]'
-
+LOGIN_FORM_BUTTON_CSS_SELECTOR = '#login_form > div:nth-child(1) > div:nth-child(4) > button:nth-child(1)'
 # Apartment Ad Edit XPaths
 OPEN_PROFILE = '/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/a'
 OPEN_MY_ADVERTISEMENT = '/html/body/div[1]/div[1]/div[4]/div/div/div[1]/nav/ul/li[2]/a'
 
 # Edit here the XPath of your Apartmant Ads
-EDIT_AD_BUTTON0 = '/html/body/div[3]/div[1]/div[4]/div/div/div[2]/div[1]/div[2]/div[2]/div/div['
-EDIT_AD_BUTTON1 = '/html/body/div[3]/div[1]/div[3]/div/div/div[2]/div[1]/div[2]/div[2]/div/div['
+EDIT_AD_BUTTON0 = '/html/body/div[3]/div[1]/div[4]/div/div/div[2]/div[1]/div[2]/div[3]/div/div['
+EDIT_AD_BUTTON1 = '/html/body/div[3]/div[1]/div[4]/div/div/div[2]/div[1]/div[2]/div[3]/div/div['
+
 #EDIT_AD_BUTTON11 = '/html/body/div[1]/div[1]/div[3]/div/div/div[2]/div[1]/div[2]/div[2]/div/div['
 EDIT_AD_BUTTON2 = ']/div[1]/div[2]/div[1]/div[2]/div/span'
 EDIT_AD_BUTTON3 = ']/div[1]/div[2]/div[1]/div[2]/div/ul/li[1]/a'
